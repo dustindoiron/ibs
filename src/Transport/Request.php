@@ -12,7 +12,7 @@ class Request
     private $apiKey;
     private $password;
     private $endpoint;
-    private $parameters;
+    private $parameters = [];
 
     public function setAuthentication(string $apiKey, string $password): Request
     {
