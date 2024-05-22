@@ -7,6 +7,10 @@ use Psr\Http\Message\ResponseInterface;
 
 trait MakesRequests
 {
+    public const MODELS_NAMESPACE = 'IBS\Models\\';
+
+    protected $lastResponse;
+
     public function makeRequest($method, array $payload): ResponseInterface
     {
         $request = (new Request())
@@ -42,6 +46,10 @@ trait MakesRequests
 
     public static function getRequestMethod(string $method)
     {
-        return ucwords(get_called_class()) . '/' . ucwords($method);
+        return str_replace(
+            [self::MODELS_NAMESPACE, '::'],
+            ['', '/'],
+            $method
+        );
     }
 }
