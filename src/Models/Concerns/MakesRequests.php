@@ -14,8 +14,12 @@ trait MakesRequests
                 $this->client->getConfiguration()->getKey('ApiKey'),
                 $this->client->getConfiguration()->getKey('Password')
             )
-            ->setEndpoint($this->client->getConfiguration()->getKey('Endpoint'))
-            ->setParameters($this->client->getConfiguration()->getKey('ResponseFormat'));
+            ->setEndpoint(
+                $this->client->getConfiguration()->getKey('Endpoint')
+            )
+            ->setParameters([
+                'ResponseFormat' => $this->client->getConfiguration()->getKey('ResponseFormat')
+            ]);
 
         if ($payload) {
             $request->setParameters($payload);
