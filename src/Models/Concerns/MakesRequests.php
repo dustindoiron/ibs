@@ -11,10 +11,10 @@ trait MakesRequests
     {
         $request = (new Request())
             ->setAuthentication(
-                $this->client->getConfiguration()->getKey('apiKey'), 
-                $this->client->getConfiguration()->getKey('password')
+                $this->client->getConfiguration()->getKey('ApiKey'),
+                $this->client->getConfiguration()->getKey('Password')
             )
-            ->setEndpoint($this->client->getConfiguration()->getKey('endpoint'))
+            ->setEndpoint($this->client->getConfiguration()->getKey('Endpoint'))
             ->setParameters($this->client->getConfiguration()->getKey('ResponseFormat'));
 
         if ($payload) {

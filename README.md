@@ -1,5 +1,4 @@
-# ibs
-💩
+# ibs 💩
 
 PHP client for internet.bs [API Reference](https://internetbs.net/internet-bs-api.pdf).
 
