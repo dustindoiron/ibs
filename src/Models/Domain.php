@@ -40,7 +40,7 @@ class Domain
     {
         return $this->makeRequest(
             self::getRequestMethod(__METHOD__),
-            ['Domain', $this->getDomain()]
+            ['Domain' => $this->getDomain()]
         );
     }
 }
