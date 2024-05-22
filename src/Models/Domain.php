@@ -3,7 +3,7 @@
 namespace IBS\Models;
 
 use InvalidArgumentException;
-use Psr\Http\Message\ResponseInterface;
+use IBS\Transport\Response;
 use IBS\Models\Concerns\MakesRequests;
 use IBS\Client;
 
@@ -36,7 +36,7 @@ class Domain
         return $this->domain;
     }
 
-    public function check(): ResponseInterface
+    public function check(): Response
     {
         return $this->makeRequest(
             self::getRequestMethod(__METHOD__),

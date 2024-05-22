@@ -3,6 +3,7 @@
 namespace IBS\Models\Concerns;
 
 use IBS\Transport\Request;
+use IBS\Transport\Response;
 use Psr\Http\Message\ResponseInterface;
 
 trait MakesRequests
@@ -11,7 +12,7 @@ trait MakesRequests
 
     protected $lastResponse;
 
-    public function makeRequest($method, array $payload): ResponseInterface
+    public function makeRequest($method, array $payload): Response
     {
         $request = (new Request())
             ->setAuthentication(
@@ -34,12 +35,12 @@ trait MakesRequests
         return $this->getLastResponse();
     }
 
-    public function setLastResponse(ResponseInterface $response): void
+    public function setLastResponse(Response $response): void
     {
         $this->lastResponse = $response;
     }
 
-    public function getLastResponse(): ResponseInterface
+    public function getLastResponse(): Response
     {
         return $this->lastResponse;
     }

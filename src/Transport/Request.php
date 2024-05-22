@@ -4,7 +4,7 @@ namespace IBS\Transport;
 
 use GuzzleHttp\Client;
 use IBS\Configuration;
-use Psr\Http\Message\ResponseInterface;
+use IBS\Transport\Response;
 use \InvalidArgumentException;
 
 class Request
@@ -59,17 +59,17 @@ class Request
         return $this->endpoint;
     }
 
-    public function execute(string $method): ResponseInterface
+    public function execute(string $method): Response
     {
         $client = new Client([
             'base_uri' => $this->getEndpoint(),
         ]);
 
-        return $client->request('POST', $method, [
+        return new Response($client->request('POST', $method, [
             'query' => array_merge(
                 $this->getParameters(),
                 $this->getAuthenticationAsArray()
             )
-        ]);
+        ]));
     }
 }
