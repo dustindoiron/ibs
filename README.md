@@ -1,4 +1,4 @@
-# ibs 💩
+# IBS 💩
 
 PHP client for internet.bs [API Reference](https://internetbs.net/internet-bs-api.pdf).
 
@@ -22,5 +22,19 @@ $test_configuration = [
 Example usage:
 ```
 $client = new \IBS\Client(\IBS\Configuration::createFromArray($production_configuration));
-$response = $client->domain()->check('www.example.com');
+$client->domain('dustindoiron.com')->check()->getBodyAsArray();
+= [
+    "transactid" => "example_transaction_id",
+    "status" => "UNAVAILABLE",
+    "domain" => "dustindoiron.com",
+    "minregperiod" => "1Y",
+    "maxregperiod" => "10Y",
+    "registrarlockallowed" => "YES",
+    "privatewhoisallowed" => "YES",
+    "realtimeregistration" => "YES",
+    "price" => [
+      "ispremium" => "NO",
+    ],
+  ]
 ```
+Take a look at `IBS\Transport\Response` for available Response data.
