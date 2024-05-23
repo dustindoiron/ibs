@@ -60,8 +60,8 @@ trait MakesRequests
     public static function getRequestMethod(string $method)
     {
         return str_replace(
-            [self::MODELS_NAMESPACE, '::'],
-            ['', '/'],
+            [self::MODELS_NAMESPACE, '::', '\\'],
+            ['', '/', '/'],
             ucwords($method)
         );
     }
