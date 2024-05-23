@@ -30,6 +30,7 @@ class Configuration
     {
         return $this->getConfiguration($key);
     }
+
     public function getConfiguration(string $key = ''): array|string
     {
         if ($key) {

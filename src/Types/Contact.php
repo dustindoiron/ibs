@@ -16,8 +16,6 @@ class Contact
         self::CONTACT_TYPE_BILLING,
     ];
 
-    protected $type;
-
     protected $firstName;
     protected $lastName;
     protected $email;
@@ -28,6 +26,8 @@ class Contact
     protected $countryCode;
     protected $postalCode;
     protected $organization;
+
+    protected $type;
 
     public function __construct(string $type = self::CONTACT_TYPE_REGISTRANT)
     {
@@ -53,6 +53,7 @@ class Contact
     {
         return $this->firstName;
     }
+
     public function setLastName(string $lastName): void
     {
         $this->lastName = $lastName;
@@ -62,6 +63,7 @@ class Contact
     {
         return $this->lastName;
     }
+
     public function setEmail(string $email): void
     {
         $this->email = $email;
@@ -71,6 +73,7 @@ class Contact
     {
         return $this->email;
     }
+
     public function setPhoneNumber(string $phoneNumber): void
     {
         $this->phoneNumber = $phoneNumber;
@@ -80,6 +83,7 @@ class Contact
     {
         return $this->phoneNumber;
     }
+
     public function setStreet(string $street): void
     {
         $this->street = $street;
@@ -89,6 +93,7 @@ class Contact
     {
         return $this->street;
     }
+
     public function setStreet2(string $street2): void
     {
         $this->street2 = $street2;
@@ -98,6 +103,7 @@ class Contact
     {
         return $this->street2;
     }
+
     public function setCity(string $city): void
     {
         $this->city = $city;
@@ -107,6 +113,7 @@ class Contact
     {
         return $this->city;
     }
+
     public function setCountryCode(string $countryCode): void
     {
         $this->countryCode = $countryCode;
@@ -116,6 +123,7 @@ class Contact
     {
         return $this->countryCode;
     }
+
     public function setPostalCode(string $postalCode): void
     {
         $this->postalCode = $postalCode;
@@ -125,6 +133,7 @@ class Contact
     {
         return $this->postalCode;
     }
+
     public function setOrganization(string $organization): void
     {
         $this->organization = $organization;
