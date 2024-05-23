@@ -2,17 +2,24 @@
 
 namespace IBS\Models;
 
+use IBS\Models\Domain\DnsRecord;
+use IBS\Models\Domain\EmailForward;
+use IBS\Models\Domain\Host;
+use IBS\Models\Domain\PrivateWhois;
+use IBS\Models\Domain\RegistrantVerification;
+use IBS\Models\Domain\UrlForward;
+use IBS\Models\Domain\TransferAway;
+use IBS\Models\Domain\RegistrarLock;
+use IBS\Models\Domain\Transfer;
 use IBS\Transport\Response;
 use IBS\Models\Concerns\MakesRequests;
+use IBS\Models\Concerns\ManagesDomains;
 use IBS\Client;
 
 class Domain
 {
     use MakesRequests;
-
-    protected $client;
-
-    protected $domain;
+    use ManagesDomains;
 
     public function __construct(Client $client, string $domain = '')
     {
@@ -20,17 +27,52 @@ class Domain
             $this->setDomain($domain);
         }
 
-        $this->client = $client;
+        $this->setClient($client);
     }
 
-    public function setDomain(string $domain)
+    public function transfer(): Transfer
     {
-        $this->domain = $domain;
+        return new Transfer($this);
     }
 
-    public function getDomain(): string
+    public function transferAway(): TransferAway
     {
-        return $this->domain;
+        return new TransferAway($this);
+    }
+
+    public function registrarLock(): RegistrarLock
+    {
+        return new RegistrarLock($this);
+    }
+
+    public function dnsRecord(): DnsRecord
+    {
+        return new DnsRecord($this);
+    }
+
+    public function emailForward(): EmailForward
+    {
+        return new EmailForward($this);
+    }
+
+    public function host(): Host
+    {
+        return new Host($this);
+    }
+
+    public function privateWhois(): PrivateWhois
+    {
+        return new PrivateWhois($this);
+    }
+
+    public function registrantVerification(): RegistrantVerification
+    {
+        return new RegistrantVerification($this);
+    }
+
+    public function urlForward(): UrlForward
+    {
+        return new UrlForward($this);
     }
 
     public function check(): Response
@@ -41,7 +83,7 @@ class Domain
         );
     }
 
-    public function create(array $parameters): Response
+    public function create(array $parameters = []): Response
     {
         return $this->makeRequest(
             self::getRequestMethod(__METHOD__),
@@ -49,7 +91,7 @@ class Domain
         );
     }
 
-    public function update(array $parameters): Response
+    public function update(array $parameters = []): Response
     {
         return $this->makeRequest(
             self::getRequestMethod(__METHOD__),
@@ -73,7 +115,7 @@ class Domain
         );
     }
 
-    public function trade(array $parameters): Response
+    public function trade(array $parameters = []): Response
     {
         return $this->makeRequest(
             self::getRequestMethod(__METHOD__),
@@ -81,7 +123,7 @@ class Domain
         );
     }
 
-    public function push(array $parameters): Response
+    public function push(array $parameters = []): Response
     {
         return $this->makeRequest(
             self::getRequestMethod(__METHOD__),
@@ -89,7 +131,7 @@ class Domain
         );
     }
 
-    public function list(array $parameters): Response
+    public function list(array $parameters = []): Response
     {
         return $this->makeRequest(
             self::getRequestMethod(__METHOD__),
@@ -105,7 +147,7 @@ class Domain
         );
     }
 
-    public function renew(array $parameters): Response
+    public function renew(array $parameters = []): Response
     {
         return $this->makeRequest(
             self::getRequestMethod(__METHOD__),
@@ -113,7 +155,7 @@ class Domain
         );
     }
 
-    public function restore(array $parameters): Response
+    public function restore(array $parameters = []): Response
     {
         return $this->makeRequest(
             self::getRequestMethod(__METHOD__),

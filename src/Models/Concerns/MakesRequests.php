@@ -4,7 +4,7 @@ namespace IBS\Models\Concerns;
 
 use IBS\Transport\Request;
 use IBS\Transport\Response;
-use Psr\Http\Message\ResponseInterface;
+use IBS\Client;
 
 trait MakesRequests
 {
@@ -12,18 +12,30 @@ trait MakesRequests
 
     protected $lastResponse;
 
+    protected $client;
+
+    public function getClient(): Client
+    {
+        return $this->client;
+    }
+
+    public function setClient(Client $client): void
+    {
+        $this->client = $client;
+    }
+
     public function makeRequest($method, array $payload): Response
     {
         $request = (new Request())
             ->setAuthentication(
-                $this->client->getConfiguration()->getKey('ApiKey'),
-                $this->client->getConfiguration()->getKey('Password')
+                $this->getClient()->getConfiguration()->getKey('ApiKey'),
+                $this->getClient()->getConfiguration()->getKey('Password')
             )
             ->setEndpoint(
-                $this->client->getConfiguration()->getKey('Endpoint')
+                $this->getClient()->getConfiguration()->getKey('Endpoint')
             )
             ->setParameters([
-                'ResponseFormat' => $this->client->getConfiguration()->getKey('ResponseFormat')
+                'ResponseFormat' => $this->getClient()->getConfiguration()->getKey('ResponseFormat')
             ]);
 
         if ($payload) {
@@ -50,7 +62,7 @@ trait MakesRequests
         return str_replace(
             [self::MODELS_NAMESPACE, '::'],
             ['', '/'],
-            $method
+            ucwords($method)
         );
     }
 }
