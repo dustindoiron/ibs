@@ -22,9 +22,35 @@ $test_configuration = [
 Example usage:
 ```
 $client = new \IBS\Client(\IBS\Configuration::createFromArray($production_configuration));
+$client->account()->priceList()->get();
+= [
+    "transactid" => "example_txid",
+    "status" => "SUCCESS",
+    "product" => [
+      [ …3],
+      [ …3],
+      [ …3],
+      [ …3],
+      [ …3],
+      [ …3],
+      [ …3],
+      [ …3],
+      [ …3],
+      [ …3],
+      [ …3],
+      [ …3],
+      [ …3],
+      [ …3],
+      [ …3],
+      [ …3],
+      [ …3],
+...
+    ]
+]
+
 $client->domain('dustindoiron.com')->check()->getBodyAsArray();
 = [
-    "transactid" => "example_transaction_id",
+    "transactid" => "example_txid",
     "status" => "UNAVAILABLE",
     "domain" => "dustindoiron.com",
     "minregperiod" => "1Y",
@@ -37,4 +63,5 @@ $client->domain('dustindoiron.com')->check()->getBodyAsArray();
     ],
   ]
 ```
+
 Take a look at `IBS\Transport\Response` for available Response data.
