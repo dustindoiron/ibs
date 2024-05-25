@@ -16,16 +16,16 @@ class Contact
         self::CONTACT_TYPE_BILLING,
     ];
 
-    protected $firstName;
-    protected $lastName;
-    protected $email;
-    protected $phoneNumber;
-    protected $street;
-    protected $street2;
-    protected $city;
-    protected $countryCode;
-    protected $postalCode;
-    protected $organization;
+    protected string $firstName;
+    protected string $lastName;
+    protected string $email;
+    protected string $phoneNumber;
+    protected string $street;
+    protected string $street2;
+    protected string $city;
+    protected string $countryCode;
+    protected string $postalCode;
+    protected string $organization;
 
     protected $type;
 

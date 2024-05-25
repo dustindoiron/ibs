@@ -13,7 +13,7 @@ class Account
 {
     use MakesRequests;
 
-    protected $client;
+    protected Client $client;
 
     public function __construct(Client $client)
     {

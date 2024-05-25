@@ -1,16 +1,17 @@
 <?php
 
 namespace IBS\Transport;
+
 use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\Psr7\Stream;
 
 class Response
 {
-    protected $statusCode = 0;
+    protected int $statusCode = 0;
 
-    protected $body;
+    protected Stream $body;
 
-    protected $original;
+    protected ResponseInterface $original;
 
     public function __construct(ResponseInterface $original)
     {

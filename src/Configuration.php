@@ -10,7 +10,7 @@ class Configuration
 
     public const IBS_PRODUCTION_ENDPOINT_DEFAULT = 'https://api.internet.bs/';
 
-    private $configuration = [];
+    private array $configuration = [];
 
     public static function createFromArray(array $configArray): Configuration
     {
