@@ -22,7 +22,7 @@ $test_configuration = [
 Example usage:
 ```
 $client = new \IBS\Client(\IBS\Configuration::createFromArray($production_configuration));
-$client->account()->priceList()->get();
+$client->account()->priceList()->get()->getBodyAsArray();
 = [
     "transactid" => "example_txid",
     "status" => "SUCCESS",
