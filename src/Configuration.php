@@ -26,12 +26,12 @@ class Configuration
         $this->configuration = $configuration;
     }
 
-    public function getKey(string $key): string
+    public function getKey(string $key): string|null
     {
         return $this->getConfiguration($key);
     }
 
-    public function getConfiguration(string $key = ''): array|string
+    public function getConfiguration(string $key = ''): array|string|null
     {
         if ($key) {
             return $this->configuration[$key];
