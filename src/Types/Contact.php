@@ -99,7 +99,7 @@ class Contact
         $this->street2 = $street2;
     }
 
-    public function getStreet2(): string
+    public function getStreet2(): string|null
     {
         return $this->street2;
     }
@@ -139,7 +139,7 @@ class Contact
         $this->organization = $organization;
     }
 
-    public function getOrganization(): string
+    public function getOrganization(): string|null
     {
         return $this->organization;
     }
