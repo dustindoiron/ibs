@@ -10,9 +10,9 @@ trait MakesRequests
 {
     public const MODELS_NAMESPACE = 'IBS\Models\\';
 
-    protected $lastResponse;
+    protected Response $lastResponse;
 
-    protected $client;
+    protected Client $client;
 
     public function getClient(): Client
     {

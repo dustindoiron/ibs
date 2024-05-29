@@ -5,14 +5,14 @@ namespace IBS\Transport;
 use GuzzleHttp\Client;
 use IBS\Configuration;
 use IBS\Transport\Response;
-use \InvalidArgumentException;
+use InvalidArgumentException;
 
 class Request
 {
-    private $apiKey;
-    private $password;
-    private $endpoint;
-    private $parameters = [];
+    private string $apiKey;
+    private string $password;
+    private string $endpoint;
+    private array $parameters = [];
 
     public function setAuthentication(string $apiKey, string $password): Request
     {
@@ -61,15 +61,18 @@ class Request
 
     public function execute(string $method): Response
     {
-        $client = new Client([
-            'base_uri' => $this->getEndpoint(),
-        ]);
-
-        return new Response($client->request('POST', $method, [
+        return new Response($this->getHttpClient()->request('POST', $method, [
             'query' => array_merge(
                 $this->getParameters(),
                 $this->getAuthenticationAsArray()
             )
         ]));
+    }
+
+    public function getHttpClient(): Client
+    {
+        return new Client([
+            'base_uri' => $this->getEndpoint(),
+        ]);
     }
 }

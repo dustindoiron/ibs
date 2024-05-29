@@ -4,7 +4,7 @@ namespace IBS\Models\Concerns;
 
 trait ManagesDomains
 {
-    protected $domain;
+    protected string $domain;
 
     public function setDomain(string $domain)
     {

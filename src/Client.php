@@ -8,7 +8,7 @@ use IBS\Models\Account;
 
 class Client
 {
-    private $configuration;
+    private Configuration $configuration;
 
     public function __construct(Configuration $configuration)
     {
