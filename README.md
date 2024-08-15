@@ -1,4 +1,6 @@
-# IBS 💩
+# WARNING: Do not use this registrar.
+
+# IBS 
 
 PHP client for internet.bs [API Reference](https://internetbs.net/internet-bs-api.pdf).
 
